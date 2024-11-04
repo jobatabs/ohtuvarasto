@@ -12,7 +12,8 @@ class Varasto:
 
         Args:
             tilavuus (float): How large the storage is
-            alku_saldo (float, optional): Beginning saldo for the storage. Defaults to 0.
+            alku_saldo (float, optional): Beginning saldo \
+            for the storage. Defaults to 0.
         """
         if tilavuus > 0.0:
             self.tilavuus = tilavuus
@@ -30,7 +31,8 @@ class Varasto:
             # täyteen ja ylimäärä hukkaan!
             self.saldo = tilavuus
 
-    # huom: ominaisuus voidaan myös laskea. Ei tarvita erillistä kenttää viela_tilaa tms.
+    # huom: ominaisuus voidaan myös laskea.
+    # Ei tarvita erillistä kenttää viela_tilaa tms.
     def paljonko_mahtuu(self):
         """How much space is left
 
@@ -61,19 +63,16 @@ class Varasto:
         Returns:
             float: How much was removed
         """
-        if maara:
-            if maara <= 0:
-                if maara < 0:
-                    return 0.0
-                if maara > self.saldo:
-                    kaikki_mita_voidaan = self.saldo
-                    self.saldo = 0.0
+        kaikki_mita_voidaan = maara
+        if maara < 0:
+            return 0.0
+        if maara > self.saldo:
+            kaikki_mita_voidaan = self.saldo
+            self.saldo = 0.0
+        else:
+            self.saldo = self.saldo - maara
 
-                    return kaikki_mita_voidaan
-
-        self.saldo = self.saldo - maara
-
-        return maara
+        return kaikki_mita_voidaan
 
     def __str__(self):
         """String representation of the storage

@@ -4,10 +4,17 @@
 from varasto import Varasto
 
 def main():
-    """Startup and demo Varasto
+    """Startup Varasto
     """
     mehua = Varasto(100.0)
     olutta = Varasto(100.0, 20.2)
+    demo(mehua, olutta)
+    errors(olutta)
+    take_from(mehua, olutta)
+
+def demo(mehua, olutta):
+    """Demo Varasto
+    """
 
     print("Luonnin jälkeen:")
     print(f"Mehuvarasto: {mehua}")
@@ -26,6 +33,10 @@ def main():
     mehua.ota_varastosta(3.14)
     print(f"Mehuvarasto: {mehua}")
 
+def errors(olutta):
+    """Test errors
+    """
+
     print("Virhetilanteita:")
     print("Varasto(-100.0);")
     huono = Varasto(-100.0)
@@ -39,6 +50,10 @@ def main():
     print("olutta.lisaa_varastoon(1000.0)")
     olutta.lisaa_varastoon(1000.0)
     print(f"Olutvarasto: {olutta}")
+
+def take_from(mehua, olutta):
+    """Taking and adding
+    """
 
     print(f"Mehuvarasto: {mehua}")
     print("mehua.lisaa_varastoon(-666.0)")
