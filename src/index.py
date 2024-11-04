@@ -1,7 +1,11 @@
+"""Launch Varasto
+"""
+
 from varasto import Varasto
 
-
 def main():
+    """Startup and demo Varasto
+    """
     mehua = Varasto(100.0)
     olutta = Varasto(100.0, 20.2)
 
